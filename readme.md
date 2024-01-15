@@ -1,4 +1,4 @@
-<p align="center"><img src="https://postimg.cc/gxCdH20y"></p>
+<p align="center"><img src="https://i.postimg.cc/s2XXyBdL/bbx-635815922-seguridad-vial.jpg"></p>
 
 
 <h1 align='center'> Proyecto Individual N°2</h1>
