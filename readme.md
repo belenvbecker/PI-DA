@@ -11,6 +11,7 @@
 ## **`Tabla de Contenidos`**
 
 - [Introducción](#introducción)
+- [Contexto](#contexto)
 - [Desarrollo](#desarrollo)
     - [ETL](#exploración-transformación-y-carga-etl)
     - [EDA](#análisis-exploratorio-eda)
@@ -22,68 +23,42 @@
 
 # Introducción
 
-El objetivo de este proyecto es llevar a cabo un estudio de Machine Learning Operations (MLOps) basado en recomendación de juegos a usuarios. Se creó un MVP (Producto Mínimo Viable) que incluye una API desplegada y un modelo de Machine Learning que proporciona recomendaciones de juegos a los usuarios en función de su historial y reseñas. Dicho proyecto se divide en tres etapas principales:
+Este proyecto se llevó a cabo con el fin de realizar la labor de un Analista de Datos en representación de una consultora. Su propósito central es realizar un análisis a raíz de los datos recopilados por el Observatorio de Movilidad y Seguridad Vial (OMSV), entidad perteneciente a la órbita de la Secretaría de Transporte del Gobierno de la Ciudad Autónoma de Buenos Aires (CABA).
 
-1. **Extracción, Transformación y Carga de datos:** Se extraen los datos relevantes de la base de datos de origen. Luego los transformamos para que sean más adecuados para el análisis, para que al final se carguen nuevamente en la base de destino. Asimismo, se realiza un análisis exploratorio de los datos, incluyendo la exploración de distribuciones y detección de correlaciones y valores atípicos.
+Este análisis tiene como objetivo examinar detalladamente la información recabada con el fin de extraer conclusiones y patrones significativos relacionados con la movilidad y la seguridad vial en la región, a fin de tomar decisiones que contribuyan a la prevención de siniestros viales con víctimas fatales, así como al aumento general de la seguridad vial en la Ciudad de Buenos Aires.
 
-2. **Preparación de Datos:** Se preparan los datos para comprender las relaciones entre las variables y crear datasets y modelos sobre ellos. También se establecen funciones para las consultas solicitadas, consumibles a través de una API.
+Las tasas de mortalidad asociadas a siniestros viales son indicadores críticos de la seguridad vial en una región determinada. Su cálculo se realiza habitualmente como el número de defunciones por cada determinado número de habitantes o vehículos registrados. La reducción de estas tasas constituye un objetivo primordial para mejorar la seguridad vial y salvaguardar la vida de los ciudadanos en la urbe.
 
-3. **Modelado:** Se despliegan dos modelos de Machine Learning basados en la similitud del conseno a fin de predecir sugerencias personalizadas sobre un determinado tipo de elemento.
+Con el propósito de cumplir con estos objetivos, se utilizaron un conjunto de datos que detalla información sobre homicidios en siniestros viales en la Ciudad de Buenos Aires durante los años 2016-2021. Este conjunto de datos es de acceso público y está disponible en la página oficial de la Ciudad Autónoma de Buenos Aires bajo la sección de Datos Oficiales.
 
+# Contexto
+
+En Argentina, cada año mueren cerca de 4.000 personas en siniestros viales, siendo esta la principal causa de muertes violentas en el país. Los informes del Sistema Nacional de Información Criminal (SNIC), del Ministerio de Seguridad de la Nación, revelan que entre 2018 y 2022 se registraron 19.630 muertes en siniestros viales en todo el país. Estas cifras equivalen a 11 personas por día que resultaron víctimas fatales por accidentes de tránsito.
+
+La Ciudad Autónoma de Buenos Aires es la capital y ciudad más poblada de la República Argentina. La superficie es algo superior a los 200 km2 y su perímetro, 60 km. Los habitantes que residen en ella, están distribuidos en barrios que, desde el punto de vista político-administrativo, se agrupan en quince comunas. La densidad de la población es de más de 15.000 habitantes por kilómetro cuadrado. Las zonas centro y norte son los espacios territoriales más densamente poblados. La población de la ciudad, según el Censo de 2022 es de 3 120 612 habitantes.Solo en 2022, se contabilizaron 3.828 muertes fatales en este tipo de hechos. Los expertos en la materia indican que en Argentina es dos o tres veces más alta la probabilidad de que una persona muera en un siniestro vial que en un hecho de inseguridad delictiva.
+
+En virtud de lo expuesto, el análisis de la problemática asociada a la prevención y reducción de siniestros viales resulta ser un aspecto de suma importancia para las autoridades.
 
 # Desarrollo
 
-El desarrollo del proyecto se basa en tres archivos JSON comprimidos (GZIP):
+El desarrollo del proyecto se fundamenta en la Base de Víctimas Fatales en Siniestros Viales en formato de Excel que se encuentra en el siguiente [link](https://data.buenosaires.gob.ar/dataset/victimas-siniestros-viales) y contiene dos tablas con los próximos datos:
 
-* **steam_games.json.gz** : Contiene información sobre los juegos, como el nombre, las especificaciones, el desarrollador, los precios y los géneros.
-* **users_items.json.gz** : Proporciona información sobre cómo los usuarios interactúan con los juegos, incluido el tiempo que pasan jugando.
-* **users_reviews.json.gz** : Contiene los comentarios y reseñas que los usuarios hacen sobre los juegos, junto con las recomendaciones y los IDs de usuarios.
+HECHOS: Contiene información sobre la cantidad de víctimas y su relación temporal y espacial con el siniestro vial, como puede ser el lugar del hecho, el día, la hora, etc. Asimismo, también presenta información de los  participantes asociados al mismo.
 
+VICTIMAS: Contiene información acerca de las víctimas de los hechos relacionadas a su edad, sexo, medio de transporte y rol que llevó a cabo durante el siniestro vial. 
 
 ### Exploración, Transformación y Carga (ETL)
 
-En primer lugar se realizó el proceso de limpieza, transformación y carga de los datos.
+En primer lugar se realizó el proceso de limpieza, transformación y carga de los datos tanto en la tabla de Hechos como en la de Víctimas para que sean más adecuados para el análisis:
 
-#### `Steam_games`
-
-- Se eliminaron filas completamente nulas y se corrigieron duplicados en el ID.
-- Se completaron los datos nulos de la columna title a partir de los datos de la columna app_name.
-- Se normalizaron los nombres de los registros que se encuentran en la columna app_name.
-- Se completaron los datos nulos de la columna genres a partir de los datos de la columna tags.
-- Se completaron los datos nulos de la columna developer a partir de los datos de la columna publisher.
-- Se completó con la palabra Otros en publisher y developer cuando tuvieran valores nulos.
-- Se normalizaron los nombres de los registros que se encuentran en las columnas publisher y developer.
-- En la columna Price se filtraron todos los registros que no sean datos numéricos y se corrigieron. Asimismo
-se imputaron los valores nulos.
-- Se cambió a formato fecha la columna release_date y se imputaron los valores nulos.
-- Se eliminaron los valores nulos restantes de las columnas tags, genres y specs al representar un pequeño porcentaje del total del dataframe.
-- Se eliminaron columnas que no se van a utilizar.
-- Se exportó para tener el dataset limpio.
-
-
-#### `User_items`
-
-- Se realizó un explode debido a que la columna de items era una lista de diccionarios.
-- Se eliminaron las columnas que no se van a utilizar.
-- Se convertió la columna item_id en tipo de dato flotante.
-- Se normalizaron los nombres de los registros que se encuentran en la columna item_name.
-- Se pasó a horas la columna playtime_forever en donde se pudo observar que posee la cantidad de minutos jugados.
-- Se eliminaron los valores nulos restantes al representar un pequeño porcentaje del total del dataframe.
-- Se eliminaron los registros que se encuentraban duplicados en las columnas item_id y user_id.
-- Se mantuvo en la columna 'playtime_forever' solamente las filas en donde los usuarios hayan jugado más de una hora.
-- Se exportó para tener el dataset limpio.
-
-
-#### `User_reviews`
-
-- Se realizó un explode ya que la columna de review era una lista de diccionarios.
-- Se eliminaron las columnas que no se van a utilizar.
-- Se eliminaron los valores nulos restantes al representar un pequeño porcentaje del total del dataframe.
-- Se convertió la columna item_id en tipo de dato flotante.
-- Se creó una nueva columna llamada 'sentiment_analysis' usando análisis de sentimiento y se eliminó la columna de review.
-- Se eliminaron los valores duplicados en las columnas 'item_id' y 'user_id'.
-- Se exportó para tener el dataset limpio.
-
+- Se normalizaron los nombres de los registros de las columnas.
+- Se modificaron los tipos de datos de los registros por los correctos para su manipulación.
+- Se verificó la existencia de datos duplicados.
+- Se crearon nuevas columnas con los datos de las coordenadas x y las coordenadas y extraídas de otra columna.
+- Se realizó un merge de la tabla Hechos con la tabla Víctimas mediante el ID.
+- Se creó una nueva columna con los días de la semana que correspondían a la fecha del siniestro.
+- Se verificó la existencia de datos nulos.
+- Se creó una columna con rangos etarios a fin de realizar un preciso análisis.
 
 
 ### Análisis Exploratorio de datos (EDA)
@@ -92,35 +67,17 @@ Una vez que se realizó la limpieza de los 3 dataset, se procedió a efectuar el
 
 
 
-### Modelo de Recomendación
-
-Para el desarrollo del modelo de Machine Learning se utilizaron varios datasets. En primera instancia, se llevó a cabo un primer modelo en donde a través de una función a la que se le otorga un Item_id, nos proporciona recomendaciones de 5 juegos similares según el género, el desarrollador y las especificaciones. Luego se implementó el segundo modelo en donde a través de una función a la que se le otorga un User_id, nos proporciona recomendaciones de 5 juegos similares para dicho usuario. También según el género, el desarrollador y las especificaciones. Ambos modelos de recomendaciones se realizaron aplicando la métrica de *similitud del coseno*, una técnica comúnmente empleada para comparar la similitud entre documentos, palabras o cualquier elemento que pueda ser representado como vectores en un espacio multidimensional.
 
 
 
-### Despliegue para la API
 
-Se desarrollaron las siguientes funciones, a las cuales se podrá acceder desde la API en la página Render:
 
-- **`PlayTimeGenre( genero : str )`**: Devuelve año con mas horas jugadas para dicho género.
-
-- **`UsersRecommend( año : int )`**: Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado..
-
-- **`UserForGenre(género: str)`**: Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
-
-- **`UsersNotRecommend( año : int )`**: Devuelve el top 3 de juegos MENOS recomendados por usuarios para el año dado.
-
-- **`sentiment_analysis( año : int )`**: Según el año de lanzamiento, devuelve una lista con la cantidad de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento.
-
-- **`recomendacion3(item_id:int)`**: Esta función recomienda 5 juegos dado un ítem_id específico.
-
-- **`recomendacion4(user_id)`**: Esta función recomienda 5 juegos para un user_id especifico.
 
 
 
 # <a name="Contacto">Contacto</a>
 
-Si tienes alguna pregunta, sugerencia o simplemente quieres ponerte en contacto conmigo, puedes alcanzarme de las siguientes maneras:
+Si tenés alguna pregunta, sugerencia o simplemente querés ponerte en contacto conmigo, podés comunicarte de las siguientes maneras:
 
 - Correo Electrónico: [belenviglioglia@gmail.com](mailto:belenviglioglia@gmail.com)
 - LinkedIn: [Belén Viglioglia Becker](https://www.linkedin.com/in/belen-viglioglia-becker/)
