@@ -66,10 +66,11 @@ En primer lugar se realizó el proceso de limpieza, transformación y carga de l
 Una vez que se realizó la limpieza de los 3 dataset, se procedió a efectuar el Análisis Exploratorio de datos(EDA) mediante el cual se confeccionaron gráficos a fin de analizar e investigar los datos y así llegar a comprender las estadísticas, encontrar valores atípicos y orientar un futuro estudio.
 
 
+-`Análisis Temporal:`
 
+![Cantidad de Víctimas por año](https://i.postimg.cc/J7JNHhtg/cantidad-victimas-por-a-o.png)
 
-
-
+Se puede observar que hubo un pico de victimas de siniestros viales en el año 2018. Asimismo, se puede observar también que en el año 2020 disminuyó considerablemente. Esto se puede relacionar con la declaración de la pandemia mundial y las restricciones de viaje y movilidad impuestas.
 
 
 
