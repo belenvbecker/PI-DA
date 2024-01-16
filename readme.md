@@ -16,6 +16,7 @@
     - [ETL](#exploración-transformación-y-carga-etl)
     - [EDA](#análisis-exploratorio-eda)
     - [INDICADORES DE RENDIMIENTO CLAVE - KPI](#indicadores-de-rendimiento-clave-KPI)
+- [Conclusiones](#conclusiones)
 - [Contacto](#contacto)
 
 
@@ -72,10 +73,13 @@ Una vez que se realizó la limpieza de los 3 dataset, se procedió a efectuar el
 
 Se evidencia un incremento notable en el número de víctimas de siniestros viales durante el año 2018. De igual manera, se aprecia una significativa disminución en el año 2020. Este fenómeno puede vincularse con la declaración de la pandemia mundial y las subsiguientes restricciones de viaje y movilidad implementadas.
 
+
+
 ![Relación entre número de víctimas por Horas y Días de la Semana](https://i.postimg.cc/8crtjd9n/victimas-por-hora-y-dia.png)
 
 
 En el gráfico se evidencia que la incidencia más significativa de víctimas en siniestros viales tiene lugar los días sábados y domingos, especialmente durante un intervalo horario comprendido entre las 03:00 a.m. y las 09:00 a.m. Asimismo, se observa que durante el resto de los días de la semana, las tasas más elevadas de siniestros viales acontecen entre las 07:00 a.m. y las 09:00 a.m., así como entre las 16:00 p.m. y las 20:00 p.m. Estos periodos coinciden con las horas de entrada y salida laboral, sugiriendo una correlación con los desplazamientos asociados a actividades laborales.
+
 
 
 -`Análisis Demográfico:`
@@ -84,10 +88,13 @@ En el gráfico se evidencia que la incidencia más significativa de víctimas en
 
 Se puede observar que el 76% de las víctimas de siniestros viales pertenecen al sexo masculino.
 
+
+
 ![Distribución de Edad de Víctimas por Sexo](https://i.postimg.cc/SQCmBBtC/distribucion-de-edad.png)
 
 Se muestran dos histogramas sobre el mismo eje a fin de poder observar las diferencias entre las víctimas de ambos sexos.
 Podemos apreciar que las victimas de siniestros viales del sexo Masculino tienen entre 20 a 40 años de edad, mientras que las víctimas de siniestros viales del sexo Femenino tienen entre 30, 60 y 80 años de edad.
+
 
 
 -`Análisis de Participantes (Acusados-Víctimas):`
@@ -96,9 +103,12 @@ Podemos apreciar que las victimas de siniestros viales del sexo Masculino tienen
 
 En el gráfico se puede observar que los autos junto con los pasajeron son los mayores acusados en relación a la cantidad de víctimas en siniestro viales. Según el diccionario de datos, pasajero es cualquier persona que se encuentra dentro, descendiendo o ascendiendo del transporte público u omnibús de larga distancia.
 
+
+
 ![Distribución de Víctimas](https://i.postimg.cc/0ywRL3fh/distribuci-n-de-victimas.png)
 
 Se puede observar en el gráfico que las motos, seguidas de los peatones, representan en su mayoría a las víctimas de los siniestros viales ocurridos 
+
 
 
 -`Análisis Geográfico:`
@@ -107,6 +117,7 @@ Se puede observar en el gráfico que las motos, seguidas de los peatones, repres
 
 En el gráfico se pueden observar un total de 15 comunas, conformadas con uno o varios Barrios. Las comunas con mayor cantidad de víctimas en siniestros viales son las 1, 4, 9, 8 y 7.
 En la comuna 1 se encuentra el microcentro de la Ciudad Autónoma de Buenos Aires. Allí mismo se concentra la mayor cantidad de oficinas de trabajo por lo que se supone que la gran cantidad de víctimas faltales por siniestros viales que suceden allí posiblemente sea el tránsito al momento de la entrada ó salida del horario laboral.
+
 
 
 ![Víctimas por Tipo de calle](https://i.postimg.cc/PfY6nHsW/victimas-por-tipo-de-calle.png)
@@ -139,6 +150,21 @@ Se define la cantidad de accidentes fatales de peatones en siniestros viales com
 
 
 ![KPI2](https://i.postimg.cc/PJjC0c04/kpi2.png)
+
+
+
+# Conclusiones
+
+De acuerdo con el análisis minucioso llevado a cabo acerca de los homicidios en siniestros viales en la Ciudad de Buenos Aires durante los años 2016-2021, se derivan las siguientes conclusiones:
+
+-La cantidad total de víctimas fatales son 702, dentro de dicho conjunto, el 76% pertenece al sexo masculino con un rango etario entre los 20 y 40 años de edad. Asimismo, el rol que prevalece mayoritariamente para dicho sexo es elde conductor.
+
+-En relación con la ubicación de los siniestros, las avenidas destacan como los lugares con mayor incidencia de siniestros. De igual manera, las comunas con mayor cantidad de víctimas en siniestros viales son las 1, 4, 9, 8 y 7. En la comuna 1 se encuentra el microcentro de la Ciudad Autónoma de Buenos Aires. Allí mismo se concentra la mayor cantidad de oficinas de trabajo por lo que se supone que la gran cantidad de víctimas faltales por siniestros viales que suceden allí posiblemente sea el tránsito al momento de la entrada ó salida del horario laboral.
+
+-El intervalo temporal con la mayor cantidad de víctimas en siniestros viales ocurren los días Sábados y Domingo en un rango horario entre las 03:00 am y las 09:00 am. Igualemente en el resto de los días semana la mayor cantidad de siniestros viales ocurre entre las 07:00 am y las 09:00 am y en entre las 16:00 pm y 20:00 pm, horarios que coindicen con las entradas y salidas del trabajo.  
+
+-Las motos son los vehículos más comunes involucrados en accidentes con víctimas, seguidos por los peatones. En el caso de los acusados, los automóviles, colectivos y vehículos de carga son los más frecuentes.
+
 
 
 
