@@ -108,6 +108,7 @@ Se puede observar en el gráfico que las motos, seguidas de los peatones, repres
 En el gráfico se pueden observar un total de 15 comunas, conformadas con uno o varios Barrios. Las comunas con mayor cantidad de víctimas en siniestros viales son las 1, 4, 9, 8 y 7.
 En la comuna 1 se encuentra el microcentro de la Ciudad Autónoma de Buenos Aires. Allí mismo se concentra la mayor cantidad de oficinas de trabajo por lo que se supone que la gran cantidad de víctimas faltales por siniestros viales que suceden allí posiblemente sea el tránsito al momento de la entrada ó salida del horario laboral.
 
+
 ![Víctimas por Tipo de calle](https://i.postimg.cc/PfY6nHsW/victimas-por-tipo-de-calle.png)
 
 Se puede observar en el gráfico que la mayor cantidad de víctimas en siniestros viales suceden en las Avenidas, seguido de las calles. 
@@ -115,6 +116,29 @@ Se puede observar en el gráfico que la mayor cantidad de víctimas en siniestro
 
 ### Indicadores de Rendimiento Clave - KPI
 
+
+Concluido el Análisis Exploratorio de Datos, se procede a emplear el conjunto de datos resultante con el propósito de trabajar en la herramienta Power BI y así proyectar los KPI (Indicadores Clave de Rendimiento) en un dashboard y construir un panel de presentación del informe, así como una visualización efectiva de los datos.
+
+
+KPI Propuestos
+
+![KPI](https://i.postimg.cc/gJMvygf2/kpis.pnghttps://i.postimg.cc/gJMvygf2/kpis.png)
+
+
+- **Reducir en un 10% la tasa de homicidios en siniestros viales de los últimos seis meses, en CABA, en comparación con la tasa de homicidios en siniestros viales del semestre anterior**
+
+Se define la tasa de homicidios en siniestros viales como el número de víctimas fatales en accidentes de tránsito por cada 100,000 habitantes en un área geográfica durante un período de tiempo específico. Su fórmula es: (Número de homicidios en siniestros viales / Población total) * 100,000
+
+- **Reducir en un 7% la cantidad de accidentes mortales de motociclistas en el último año, en CABA, respecto al año anterior**
+
+Se define la cantidad de accidentes mortales de motociclistas en siniestros viales como el número absoluto de accidentes fatales en los que estuvieron involucradas víctimas que viajaban en moto en un determinado periodo temporal. Su fórmula para medir la evolución de los accidentes mortales con víctimas en moto es: (Número de accidentes mortales con víctimas en moto en el año anterior - Número de accidentes mortales con víctimas en moto en el año actual) / (Número de accidentes mortales con víctimas en moto en el año anterior) * 100
+
+ - **Reducir en un 9% la cantidad de accidentes con víctimas fatales de peatones en el último en el último año, en CABA, respecto al año anterior**
+
+Se define la cantidad de accidentes fatales de peatones en siniestros viales como el número absoluto de accidentes fatales en los que estuvieron involucradas víctimas que circulaban a pie en un determinado periodo temporal. Su fórmula para medir la evolución de los accidentes mortales con víctimas peaton es: (Número de accidentes mortales con víctimas peaton en el año anterior - Número de accidentes mortales con víctimas peaton en el año actual) / (Número de accidentes mortales con víctimas peaton en el año anterior) * 100
+
+
+![KPI2](https://i.postimg.cc/PJjC0c04/kpi2.png)
 
 
 
